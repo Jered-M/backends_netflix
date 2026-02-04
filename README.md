@@ -28,38 +28,47 @@ backend/
 ## 🚀 Installation
 
 ### Prérequis
+
 - Python 3.8+
 - pip
 
 ### Étapes
 
 1. **Cloner le dépôt**
+
 ```bash
 git clone https://github.com/Jered-M/backends_netflix.git
 cd backends_netflix
 ```
 
 2. **Créer un environnement virtuel**
+
 ```bash
 python -m venv venv
 ```
 
 3. **Activer l'environnement virtuel**
+
 - Windows:
+
 ```bash
 venv\Scripts\activate
 ```
+
 - Linux/Mac:
+
 ```bash
 source venv/bin/activate
 ```
 
 4. **Installer les dépendances**
+
 ```bash
 pip install -r requirements.txt
 ```
 
 5. **Lancer le serveur**
+
 ```bash
 python app.py
 ```
@@ -70,13 +79,14 @@ Le serveur sera accessible sur `http://localhost:5000`
 
 ### Authentification (`/api/auth`)
 
-| Méthode | Endpoint | Description |
-|---------|----------|-------------|
-| POST | `/api/auth/register` | Inscription d'un utilisateur |
-| POST | `/api/auth/login` | Connexion |
-| GET | `/api/auth/profile/:userId` | Récupérer le profil |
+| Méthode | Endpoint                    | Description                  |
+| ------- | --------------------------- | ---------------------------- |
+| POST    | `/api/auth/register`        | Inscription d'un utilisateur |
+| POST    | `/api/auth/login`           | Connexion                    |
+| GET     | `/api/auth/profile/:userId` | Récupérer le profil          |
 
 **Exemple de requête - Register:**
+
 ```json
 POST /api/auth/register
 {
@@ -88,16 +98,17 @@ POST /api/auth/register
 
 ### Médias (`/api`)
 
-| Méthode | Endpoint | Description |
-|---------|----------|-------------|
-| GET | `/api/trending` | Films et séries tendances |
-| GET | `/api/films?query=Action&page=1` | Liste de films |
-| GET | `/api/series?query=Drama&page=1` | Liste de séries |
-| GET | `/api/media/:mediaId` | Détails d'un média |
-| GET | `/api/search?q=query&type=movie` | Recherche |
-| GET | `/api/genre?genre=Action&type=movie` | Médias par genre |
+| Méthode | Endpoint                             | Description               |
+| ------- | ------------------------------------ | ------------------------- |
+| GET     | `/api/trending`                      | Films et séries tendances |
+| GET     | `/api/films?query=Action&page=1`     | Liste de films            |
+| GET     | `/api/series?query=Drama&page=1`     | Liste de séries           |
+| GET     | `/api/media/:mediaId`                | Détails d'un média        |
+| GET     | `/api/search?q=query&type=movie`     | Recherche                 |
+| GET     | `/api/genre?genre=Action&type=movie` | Médias par genre          |
 
 **Exemple de réponse - Trending:**
+
 ```json
 {
   "films": [
@@ -115,13 +126,13 @@ POST /api/auth/register
 
 ### Utilisateur (`/api/user`)
 
-| Méthode | Endpoint | Description |
-|---------|----------|-------------|
-| GET | `/api/user/:userId/favorites` | Liste des favoris |
-| POST | `/api/user/:userId/favorites` | Ajouter aux favoris |
-| DELETE | `/api/user/:userId/favorites` | Retirer des favoris |
-| GET | `/api/user/:userId/history` | Historique de visionnage |
-| POST | `/api/user/:userId/history` | Ajouter à l'historique |
+| Méthode | Endpoint                      | Description              |
+| ------- | ----------------------------- | ------------------------ |
+| GET     | `/api/user/:userId/favorites` | Liste des favoris        |
+| POST    | `/api/user/:userId/favorites` | Ajouter aux favoris      |
+| DELETE  | `/api/user/:userId/favorites` | Retirer des favoris      |
+| GET     | `/api/user/:userId/history`   | Historique de visionnage |
+| POST    | `/api/user/:userId/history`   | Ajouter à l'historique   |
 
 ## 🔧 Technologies
 
@@ -136,6 +147,7 @@ POST /api/auth/register
 Les données des films et séries proviennent de l'**API OMDb** (Open Movie Database).
 
 Clé API configurée dans `config/config.py` :
+
 ```python
 OMDB_API_KEY = '99673ad7'
 ```
@@ -143,6 +155,7 @@ OMDB_API_KEY = '99673ad7'
 ## ⚙️ Configuration
 
 Modifiez `config/config.py` pour personnaliser :
+
 - Clé secrète Flask
 - Clé API OMDb
 - Origines CORS autorisées
@@ -159,6 +172,7 @@ class Config:
 ## 📝 Modèles de données
 
 ### User
+
 ```python
 {
     'id': int,
@@ -171,6 +185,7 @@ class Config:
 ```
 
 ### Media
+
 ```python
 {
     'imdbID': str,
@@ -219,6 +234,7 @@ MIT
 ## 👤 Auteur
 
 **Jered M**
+
 - GitHub: [@Jered-M](https://github.com/Jered-M)
 
 ---

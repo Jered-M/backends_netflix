@@ -4,6 +4,7 @@ from config.config import Config
 from routes.auth_routes import auth_bp
 from routes.media_routes import media_bp
 from routes.user_routes import user_bp
+import os
 
 def create_app():
     """Factory pour créer l'application Flask"""
@@ -46,4 +47,5 @@ def create_app():
 
 if __name__ == '__main__':
     app = create_app()
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)

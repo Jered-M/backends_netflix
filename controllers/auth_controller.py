@@ -1,5 +1,6 @@
 from flask import jsonify, request
 from models.user import User
+from utils.jwt_utils import generate_token, token_required
 
 class AuthController:
     """Contrôleur pour gérer l'authentification"""
@@ -25,9 +26,13 @@ class AuthController:
         )
         user.save()
         
+        # Générer le token JWT
+        token = generate_token(user.id)
+        
         return jsonify({
             'message': 'Inscription réussie',
-            'user': user.to_dict()
+            'user': user.to_dict(),
+            'token': token
         }), 201
     
     @staticmethod
@@ -45,12 +50,17 @@ class AuthController:
         if not user or not user.check_password(data['password']):
             return jsonify({'error': 'Email ou mot de passe incorrect'}), 401
         
+        # Générer le token JWT
+        token = generate_token(user.id)
+        
         return jsonify({
             'message': 'Connexion réussie',
-            'user': user.to_dict()
+            'user': user.to_dict(),
+            'token': token
         }), 200
     
     @staticmethod
+    @token_required
     def get_profile(user_id):
         """Récupérer le profil d'un utilisateur"""
         user = User.find_by_id(user_id)

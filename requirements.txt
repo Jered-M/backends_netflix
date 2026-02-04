@@ -5,3 +5,4 @@ requests>=2.31.0
 Werkzeug>=3.0.0
 WTForms>=3.1.0
 gunicorn>=21.2.0
+PyJWT>=2.8.0

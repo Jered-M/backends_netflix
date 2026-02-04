@@ -10,7 +10,11 @@ class Config:
     OMDB_API_KEY = os.environ.get('OMDB_API_KEY') or '99673ad7'
     
     # CORS
-    CORS_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000']
+    CORS_ORIGINS = [
+        'http://localhost:3000', 
+        'http://127.0.0.1:3000',
+        'https://frontend-netflix-1vpq.onrender.com'
+    ]
     
     # Debug
     DEBUG = True
